@@ -4,6 +4,15 @@
 
 Stencil's Cornerstone theme is the building block for BigCommerce theme developers to get started quickly developing premium quality themes on the BigCommerce platform.
 
+***This theme has been modified with a custom product page template file and additional custom html and js packages. If a product contains the identifier of __newtab, the key is indexed and initiates a new tab to be displayed alongside the default 'Description' tab, with the custom field value contents being the tab's title.
+
+ex: Custom Field entry
+name = __newtab
+value = Documentation
+Result: Any inital custom fields are displayed in the default theme designation (alongside base product data like SKU and pricing). When __newtab value is verified, there will be the default Description tab and data container, as well as a new tab next to it labeled 'Documentation'. Custom field data following the __newtab trigger will be displayed within that container until end of text or another trigger is found.
+
+Review DOCS-dynamic-custom-field-tabs.md for details
+
 ### Stencil Utils
 [Stencil-utils](https://github.com/bigcommerce/stencil-utils) is our supporting library for our events and remote interactions.
 
