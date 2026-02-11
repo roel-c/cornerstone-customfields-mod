@@ -1,0 +1,38 @@
+<ul class="tabs" data-tab>
+    {{#if product.description}}
+        <li class="tab is-active">
+            <a class="tab-title" href="#tab-description">{{lang 'products.description'}}</a>
+        </li>
+    {{/if}}
+    {{#if product.warranty}}
+        <li class="tab {{#unless product.description}}is-active{{/unless}}">
+            <a class="tab-title" href="#tab-warranty">{{lang 'products.warranty'}}</a>
+        </li>
+    {{/if}}
+    {{!-- Dynamic custom field tabs (from __newtab) are injected here by JS --}}
+    <li id="product-dynamic-cf-tabs-anchor" class="u-hiddenVisually" aria-hidden="true"></li>
+    {{#all settings.show_product_reviews theme_settings.show_product_reviews product.reviews.total}}
+        <li class="tab">
+            <a class="tab-title productView-reviewTabLink" href="#tab-reviews">{{lang 'products.reviews.header' total=product.reviews.total}}</a>
+        </li>
+    {{/all}}
+</ul>
+<div class="tabs-contents">
+    {{#if product.description}}
+        <div class="tab-content is-active" id="tab-description">
+            {{{product.description}}}
+        </div>
+    {{/if}}
+    {{#if product.warranty}}
+        <div class="tab-content {{#unless product.description}}is-active{{/unless}}" id="tab-warranty">
+            {{{product.warranty}}}
+        </div>
+    {{/if}}
+    {{!-- Dynamic custom field tab content injected here by JS --}}
+    <div id="product-dynamic-cf-content-anchor" class="u-hiddenVisually" aria-hidden="true"></div>
+    {{#all settings.show_product_reviews theme_settings.show_product_reviews}}
+       <div class="tab-content" id="tab-reviews">
+           {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+       </div>
+    {{/all}}
+</div>
